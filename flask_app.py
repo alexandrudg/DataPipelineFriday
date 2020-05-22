@@ -8,7 +8,7 @@ app = Flask(__name__)
 # http://alexandrudg.pythonanywhere.com/
 @app.route('/')
 def hello_world():
-    return 'Locations App from yelp api!'
+    return 'Locations App from yelp api! CI/CD test.'
 
 # http://alexandrudg.pythonanywhere.com/yelp/api/v1.0/category/Klosterhof
 @app.route('/yelp/api/v1.0/category/<string:restaurant>', methods=['GET'])
