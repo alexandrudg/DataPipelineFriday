@@ -42,6 +42,22 @@ def get_rate_ranking(city):
         abort(404)
     return jsonify({'ranking': ranking})
 
+# http://alexandrudg.pythonanywhere.com/yelp/api/v1.0/price_ranking/berlin
+@app.route('/yelp/api/v1.0/price_ranking/<string:city>', methods=['GET'])
+def get_price_ranking(city):
+    price = []
+    qry = "select name, price, city, zip_code, state from %s order by price DESC;" % (city)
+    con = sqlite3.connect('/home/alexandrudg/DataPipelineFriday/locations.sqlite')
+    c = con.cursor()
+    c.execute(qry)
+    rows = c.fetchall()
+    for row in rows:
+        price.append(row)
+    c.close()
+    if len(row) == 0:
+        abort(404)
+    return jsonify({'ranking': price})
+
 @app.route('/update_server', methods=['POST'])
 def webhook():
     if request.method == 'POST':
