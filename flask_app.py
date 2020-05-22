@@ -28,7 +28,7 @@ def get_categories(restaurant):
 
 # http://alexandrudg.pythonanywhere.com/yelp/api/v1.0/rate_ranking/berlin
 @app.route('/yelp/api/v1.0/rate_ranking/<string:city>', methods=['GET'])
-def get_categories(city):
+def get_rate_ranking(city):
     ranking = []
     qry = "select name, url, rating, city, zip_code, state from '%s%' order by rating DESC;" % (city)
     con = sqlite3.connect('/home/alexandrudg/DataPipelineFriday/locations.sqlite')
