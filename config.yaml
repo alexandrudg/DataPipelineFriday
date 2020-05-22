@@ -1,18 +1,4 @@
-#Which COVID news are covered in US
-API-ROOT: 'https://api.yelp.com/v3/businesses/search?'
-API-KEY: '6vSB_K8fqrQvSDCOuDX-F-1Q3rlAnlKUifrLD7TROYb9AYnLQoFNUE04a9u8FIhZe7w8lj0FbzKyCJWoYkcY5aCOUIcIvz9b6NztpyN8jusPK489gTdGRSU7sKTGXnYx'
-API-FIELDS:
-      - "id"
-      - "name"
-      - "url"
-      - "review_count"
-      - "categories"
-      - "rating"
-      - "price"
-      - "location['address1']"
-      - "location['city']"
-      - "location['zip_code']"
-      - "location['state']"
+#SQL to create tables & column setup
 TABLE-CREATE: "CREATE TABLE IF NOT EXISTS {table} (
     id TEXT,
     name TEXT,
@@ -26,7 +12,6 @@ TABLE-CREATE: "CREATE TABLE IF NOT EXISTS {table} (
     zip_code TEXT,
     state TEXT
     );"
-
 #Settings for querying/files/tables
 restaurant_locations:
   - query: 'Frankfurt,Germany'
@@ -45,30 +30,3 @@ restaurant_locations:
     categories: 'restaurants'
     table: 'hamburg'
     secondary_index: 'categories'
-question1: 'SELECT
-              distinct us.description,
-              us.source_id,
-              covid.description,
-              covid.source_id
-            FROM
-              us
-              INNER JOIN covid ON us.description = covid.description'
-#What COVID-19 headlines contain trump mentions
-question2: "SELECT
-              distinct us.description,
-              us.source_id,
-              covid.description,
-              covid.source_id
-            FROM
-              us
-            INNER JOIN covid ON us.description = covid.description
-            WHERE covid.description LIKE '%trump%'"
-#Which publishers do Berlin & US have in common
-question3: 'SELECT
-              distinct berlin.source_id,
-              berlin.description,
-              us.source_id,
-              us.description
-            FROM
-              berlin us
-              INNER JOIN us berlin on berlin.source_id = us.source_id'
