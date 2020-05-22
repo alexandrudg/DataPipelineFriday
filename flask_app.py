@@ -40,7 +40,7 @@ def get_rate_ranking(city):
     c.close()
     if len(row) == 0:
         abort(404)
-    return jsonify({'ranking': ranking[0]})
+    return jsonify({'ranking': ranking})
 
 @app.route('/update_server', methods=['POST'])
 def webhook():
