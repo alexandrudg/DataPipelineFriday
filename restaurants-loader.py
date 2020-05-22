@@ -67,4 +67,3 @@ for location in locations:
     except IOError:
       print("I/O error")
 
-
