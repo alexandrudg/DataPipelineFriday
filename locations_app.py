@@ -15,7 +15,7 @@ def hello_world():
 def get_categories(restaurant):
     categories = []
     qry = "SELECT categories FROM frankfurt WHERE name = '%s';" % (restaurant)
-    con = sqlite3.connect('/home/sonalinayak/Deploy/locations.sqlite')
+    con = sqlite3.connect('/home/alexandrudg/DataPipelineFriday/locations.sqlite')
     c = con.cursor()
     c.execute(qry)
     rows = c.fetchall()
