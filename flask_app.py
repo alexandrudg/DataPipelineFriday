@@ -29,7 +29,7 @@ def get_categories(restaurant):
 @app.route('/update_server', methods=['POST'])
 def webhook():
     if request.method == 'POST':
-        repo = git.Repo('/DataPipelineFriday')
+        repo = git.Repo('/home/alexandrudg/DataPipelineFriday')
         origin = repo.remotes.origin
         origin.pull()
         return 'Updated PythonAnywhere successfully', 200
